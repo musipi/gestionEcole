@@ -23,22 +23,19 @@
 </head>
 
 <body class="adminbody">
-
     <div id="main">
-
         <!-- top bar navigation -->
+        {% block header %}
         <div class="headerbar">
-
             <!-- LOGO -->
             <div class="headerbar-left">
                 <a href="index.html" class="logo">
                     <img alt="Logo" src="{% static 'assets/images/logo.png'%}" />
-                    <span>Nura Admin</span>
+                    <span>gestion ecole</span>
                 </a>
             </div>
 
             <nav class="navbar-custom">
-
                 <ul class="list-inline float-right mb-0">
                     <li class="list-inline-item dropdown notif">
                         <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
@@ -58,7 +55,7 @@
                             <!-- item-->
                             <a href="mail-all.html" class="dropdown-item notify-item">
                                 <p class="notify-details ml-0">
-                                    <b>John Doe</b>
+                                    <b>Inscription</b>
                                     <span>New message received</span>
                                     <small class="text-muted">3 minutes ago</small>
                                 </p>
@@ -233,7 +230,6 @@
 
         </div>
         <!-- End Navigation -->
-
         <!-- Left Sidebar -->
         <div class="left main-sidebar">
 
@@ -257,17 +253,17 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="blog.html">
+                            <a href="/inscription/addetudiant">
                                 <i class="fas fa-file-alt"></i>
-                                <span> Blog </span>
+                                <span> Inscription </span>
                             </a>
                         </li>
 
                         <li class="submenu">
-                            <a href="mail-all.html">
+                            <a href="{% url 'addPromotion'%}">
                                 <span class="label radius-circle bg-danger float-right">18</span>
                                 <i class="fas fa-envelope"></i>
-                                <span> Mailbox </span>
+                                <span> Promotion </span>
                             </a>
                         </li>
 
@@ -502,7 +498,9 @@
 
         </div>
         <!-- End Sidebar -->
+        {% endblock %}
 
+        {%  block content %}
         <div class="content-page">
 
             <!-- Start content -->
@@ -879,7 +877,7 @@
 
         <!-- App js -->
         <script src="{% static 'assets/js/admin.js'%}"></script>
-
+     {% endblock %}
     </div>
     <!-- END main -->
 

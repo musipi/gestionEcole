@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+{% extends 'index.html' %}
+
 <body>
-$END$
+ {% block content %}
+     <div class="row">
+         <div class="col-md-6">
+             <h1 class="text-center">formulaire</h1>
+              <form method="post" action="/inscription/addetudiant"  class="form-content">
+                   {% csrf_token %}
+                  <div class="form-group">
+                       <input class="form-control" type="text" name="nomEtudiant" placeholder="nom etudiant">
+                  </div>
+                  <div class="form-group">
+                       <input class="form-control" type="text" name="postnomEtu" placeholder="postnom etudiant">
+                  </div>
+                  <div class="form-group">
+                       <input class="form-control" type="text" name="prenomEtud" placeholder="prenom etudiant">
+                  </div>
+                  <div class="form-group">
+                       <input class="form-control" type="number" name="telephone" placeholder="telephone">
+                  </div>
+                  <div class="form-group">
+                      <select class="form-control" name="genre">
+                          <option class="form-control" value="masculin">masculin</option>
+                          <option class="form-control" value="feminin">feminin</option>
+                           <option class="form-control" value="autres">autres</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                       <input class="form-control" type="text" name="lieuNaissance" placeholder="lieu de naissance">
+                  </div>
+                  <div class="form-group">
+                       <input class="form-control" type="text" name="nomTuteur" placeholder="nom tuteur">
+                  </div>
+                  <div class="form-group">
+                       <textarea class="form-control" name="adresseDomicile"  placeholder="adresse domicile"></textarea>
+                  </div>
+                  <div class="form-group">
+                       <button class="btn btn-primary btn-block">valider</button>
+                  </div>
+                  <div class="form-group">
+                       <button class="btn btn-outline-danger btn-block">annuler</button>
+                  </div>
+              </form>
+         </div>
+         <div class="col-md-6">
+                   <h1 class="text-center">liste des etudiants</h1>
+                  <table class="table">
+                      <thead>
+                          <tr class="table">
+                              <th>n°</th>
+                              <th>nom etudiant</th>
+                              <th>nom etudiant</th>
+                              <th>nom etudiant</th>
+                              <th>delete</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {%  for i in formGet %}
+                             <tr>
+                                 <td>{{i.id}}</td>
+                                 <td>{{i.nomEtudiant}}</td>
+                                 <td>{{i.postnomEtu }}</td>
+                                 <td>{{i.prenomEtud}}</td>
+                                 <td><button class="btn btn-outline-danger btn-block"><a href="{%  url 'deleteData' i.id %}">delete</a></button></td>
+
+                             </tr>
+                          {% endfor %}
+
+         <!-- END main -->
+
+         <!-- BEGIN Java Script for this page -->
+         </tbody>
+
+         </table>
+     </div>
+     </div>
+    <!-- END Java Script for this page -->
+{% endblock %}
 </body>
 </html>
